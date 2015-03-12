@@ -1,0 +1,19 @@
+== README
+
+## Github API
+
+[√] Install the Gem.
+[√] [Octokit Github Gem]("https://github.com/octokit/octokit.rb")
+[√] Set tokens
+[√] [Github]("https://github.com/settings/applications#personal-access-tokens")
+[√] Make sure to hide files with secrets from github using .gitignore.
+[√] [dotenv]("https://github.com/bkeepers/dotenv")
+
+
+
+## Stories
+[√] Build a rails application that interacts with github.
+[√] It lists your repositories.
+[√] It lists your location.
+- text field that returns a searched user's information including Location, Created at, email, name, company, avatar.
+- text field that lists a searched users repositories.

@@ -1,0 +1,67 @@
+
+
+<p>
+  check out all the creator's github repos! <%= link_to 'Repositories', repos_path %>
+</p>
+
+<div class="pull-right">
+  <%= form_tag '/', method: :get %>
+  <%= label_tag 'Look up another GitHub user here:'%>
+  <%= text_field_tag :user_name %>
+  <%= submit_tag "Search" %>
+</div>
+
+<% if @gituser %>
+<h1> <%= link_to @gituser.name, "#{@gituser.html_url}" %> (@<%= @gituser.login %>) </h1>
+<%= image_tag "#{@gituser.avatar_url}" %>
+<%= @gituser.location %>
+<%= @gituser.company %>
+<%= @gituser.email %>
+<%= @gituser.created_at.to_formatted_s(:long) %>
+
+<% else %>
+<h1> <%= link_to @fetcher.person.name, "#{@fetcher.person.html_url}" %> (@<%= @fetcher.person.login %>) </h1>
+<h1> <%= @fetcher.person.location %> </h1>
+<h1> <%= @fetcher.person.email %> </h1>
+<h1> <%= image_tag "#{@fetcher.person.avatar_url}" %> </h1>
+
+<% end %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Repo Name:
+      </th>
+      <th>
+        Created On:
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @gitrepos %>
+    <% @gitrepos.each do |repo| %>
+    <tr>
+      <td>
+        <%= link_to repo.name, "#{repo.html_url}" %>
+      </td>
+      <td>
+        <%= repo.created_at %>
+      </td>
+    </tr>
+    <% end %>
+    <% else %>
+    <% @fetcher.repos.each do |repo| %>
+    <tr>
+      <td>
+        <%= link_to repo.name, "#{repo.html_url}" %>
+      </td>
+      <td>
+        <%= repo.created_at %>
+      </td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>

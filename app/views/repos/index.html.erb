@@ -1,0 +1,31 @@
+<h1> <%= @fetcher.person.name %> </h1>
+<h1> <%= @fetcher.person.login %> </h1>
+<h1> <%= @fetcher.person.location %> </h1>
+<h1> <%= @fetcher.person.email %> </h1>
+<h1> <%= image_tag "#{@fetcher.person.avatar_url}" %> </h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Repo Name:
+      </th>
+      <th>
+        Created On:
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @fetcher.repos.each do |repo| %>
+    <tr>
+      <td>
+        <%= link_to repo.name, "#{repo.html_url}" %>
+      </td>
+      <td>
+        <%= repo.created_at %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
